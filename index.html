@@ -1,87 +1,655 @@
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>MOD64</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="papaparse.min.js"></script>
+<html lang="en">
+<head>
+  <title>Jaskrit Singh - Robotics Software Engineer</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+    .navbar {
+      background-color: #2c3e50;
+    }
+    .navbar-brand, .nav-link {
+      color: white !important;
+    }
+    .section-title {
+      border-left: 5px solid #3498db;
+      padding-left: 15px;
+      margin: 30px 0 20px 0;
+    }
+    .hero-section {
+      background-color: #3498db;
+      color: white;
+      padding: 60px 0;
+      margin-bottom: 30px;
+      background-image: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+    }
+    .hero-section h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+    .hero-section p {
+      font-size: 1.5rem;
+      font-weight: 300;
+    }
+    .card {
+      margin-bottom: 20px;
+      border-radius: 5px;
+      transition: transform 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .card:hover .card-img-top {
+      transform: scale(1.05);
+    }
+    .skills-list .badge {
+      font-size: 0.9rem;
+      margin: 3px;
+      padding: 8px 12px;
+    }
+    .timeline {
+      position: relative;
+      padding: 0;
+      list-style: none;
+    }
+    .timeline:before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 40px;
+      width: 2px;
+      margin-left: -1.5px;
+      content: '';
+      background-color: #e9ecef;
+    }
+    .timeline > li {
+      position: relative;
+      min-height: 50px;
+      margin-bottom: 20px;
+    }
+    .timeline > li:after, .timeline > li:before {
+      display: table;
+      content: ' ';
+    }
+    .timeline > li:after {
+      clear: both;
+    }
+    .timeline > li .timeline-panel {
+      position: relative;
+      float: right;
+      width: calc(100% - 90px);
+      padding: 0 20px 0 100px;
+    }
+    .timeline > li .timeline-image {
+      position: absolute;
+      z-index: 100;
+      left: 0;
+      width: 80px;
+      height: 80px;
+      margin-left: 0;
+      text-align: center;
+      color: white;
+      border-radius: 100%;
+      background-color: #3498db;
+    }
+    .timeline > li .timeline-image h4 {
+      font-size: 14px;
+      line-height: 18px;
+      margin-top: 30px;
+    }
+    .timeline > li.timeline-inverted > .timeline-panel {
+      float: right;
+      padding: 0 20px 0 100px;
+      text-align: left;
+    }
+    .footer {
+      background-color: #2c3e50;
+      color: white;
+      padding: 30px 0;
+      margin-top: 50px;
+    }
+    .contact-icon {
+      font-size: 2rem;
+      margin-right: 15px;
+      color: #3498db;
+    }
+    .award-badge {
+      background-color: #f1c40f;
+      color: #333;
+    }
+    .card-header {
+      padding: 0;
+    }
+    .card-header h5, .card-header h6 {
+      padding: 0 15px 15px 15px;
+    }
+    .profile-img {
+      border: 5px solid white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+    }
+    .profile-img:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
-  <body>
-      <br>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-        <!-- <div class="card">
-        <div class="card-body">Play over 50 existing boardgames, or create your own</div>
-        </div> -->
-        <br>
+      <a class="navbar-brand" href="#">Jaskrit Singh</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#education">Education</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#experience">Experience</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#research">Research</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Entrepreneurship</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#volunteer">Volunteer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#awards">Awards</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <h2>Projects</h2>
-    <br>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">MOD64</h5>
-          <p class="card-text">Boardgame Platform</p>
-          <a href="https://youtu.be/zMkfOkG9Cpw" class="card-link"> Pitch Video </a>
-          <a href="https://jazkarit.github.io/MOD64/" class="card-link"> Website </a>
+  <!-- Hero Section -->
+  <section class="hero-section" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <h1>Jaskrit Singh</h1>
+          <p>Robotics Software Engineer</p>
+          <div class="mt-4">
+            <a href="mailto:jsingh3@wpi.edu" class="btn btn-light mr-2"><i class="fas fa-envelope"></i> jsingh3@wpi.edu</a>
+            <a href="tel:+14066030536" class="btn btn-light mr-2"><i class="fas fa-phone"></i> 406-603-0536</a>
+            <a href="https://github.com/JazKarit" target="_blank" class="btn btn-light mr-2"><i class="fab fa-github"></i> github.com/JazKarit</a>
+            <a href="https://youtube.com/@coding_with_jaz" target="_blank" class="btn btn-light"><i class="fab fa-youtube"></i> YouTube</a>
+          </div>
+        </div>
+        <div class="col-lg-4 text-center">
+          <img width="200" src="res/jaskrit.jpg" alt="Jaskrit Singh" class="img-fluid rounded-circle profile-img">
         </div>
       </div>
-    <br>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Daedulus' Dungeon</h5>
-          <p class="card-text">Teaching Math with Puzzles</p>
-          <a href="https://github.com/JazKarit/Daedalus-Dungeon" class="card-link">  Github (check out the paper) </a>
-        </div>
     </div>
-    <br>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Thinking Huts</h5>
-          <p class="card-text">Web Scraping for Nonprofit </p>
-          <a href="https://github.com/blueprintboulder/s21-thinking-huts" class="card-link">  Github (check out the csv file) </a>
-        </div>
-    </div>
-    
-    <br>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Robot Swarm</h5>
-          <p class="card-text"></p>
-          <a href="https://youtu.be/oCt879c837Y" class="card-link">  Youtube Video (No Sound) </a>
-        </div>
-    </div>
-    <br>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Solving a Cylinder Puzzle with Algorithms </h5>
-          <p class="card-text"></p>
-          <a href="https://youtu.be/Qyq0Ie7wej8"> Youtube Video (Part 1) </a>
-          <br>
-            <a href="https://youtu.be/PSaz5Z13N80"> Youtube Video (Part 2) </a>
-        </div>
-    </div>
-    <br>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Mirage</h5>
-          <p class="card-text">Music Composition</p>
-          <a href="https://youtu.be/28PSUq3etoU">  Youtube Video </a>        </div>
-    </div>
-    <br>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">Cybersecurity Escape Room</h5>
-          <p class="card-text"></p>
-          <a href="https://youtu.be/JdD3UA1iSi0">  Youtube Video </a>        </div>
-    </div>
-    <br>
+  </section>
 
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Education Section -->
+    <h2 class="section-title" id="education">Education</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h4>Worcester Polytechnic Institute</h4>
+            <h6 class="text-muted">M.S. Robotics Engineering</h6>
+            <p>Graduating May 2026</p>
+            <p>GPA: 4.00</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h4>University of Colorado, Boulder</h4>
+            <h6 class="text-muted">B.S. Computer Science & B.S. Applied Mathematics</h6>
+            <p>Graduated May 2022</p>
+            <p>GPA: 3.98</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills Section -->
+    <h2 class="section-title" id="skills">Skills</h2>
+    <div class="card">
+      <div class="card-body">
+        <h4>Programming Languages</h4>
+        <div class="skills-list">
+          <span class="badge badge-primary">Python</span>
+          <span class="badge badge-secondary">Numpy</span>
+          <span class="badge badge-secondary">OpenCV</span>
+          <span class="badge badge-secondary">PyTorch</span>
+          <span class="badge badge-secondary">Gym</span>
+          <span class="badge badge-primary">C#</span>
+          <span class="badge badge-secondary">Unity</span>
+          <span class="badge badge-secondary">NUnit</span>
+          <span class="badge badge-secondary">Avalonia</span>
+          <span class="badge badge-primary">C++</span>
+          <span class="badge badge-secondary">OMPL</span>
+          <span class="badge badge-primary">ROS 2</span>
+          <span class="badge badge-secondary">Gazebo</span>
+          <span class="badge badge-primary">MATLAB</span>
+        </div>
+        
+        <h4 class="mt-4">Other Skills</h4>
+        <div class="skills-list">
+          <span class="badge badge-info">Motion Planning</span>
+          <span class="badge badge-info">Machine Learning</span>
+          <span class="badge badge-info">Computer Vision</span>
+          <span class="badge badge-info">Augmented Reality</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience Section -->
+    <h2 class="section-title" id="experience">Work Experience</h2>
+    <ul class="timeline">
+      <li>
+        <div class="timeline-image">
+          <h4>2023-2024</h4>
+        </div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4>Software Engineer</h4>
+            <h6 class="text-muted">Naval Nuclear Laboratory</h6>
+          </div>
+          <div class="timeline-body">
+            <ul>
+              <li>Developed robotic test systems for radiation research</li>
+              <li>Introduced practices to improve team effectiveness</li>
+              <li>Led bi-weekly client meetings to iterate GUI design</li>
+            </ul>
+            <span class="badge badge-dark">C#</span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="timeline-image">
+          <h4>2021-2022</h4>
+        </div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4>Intern Software Engineer</h4>
+            <h6 class="text-muted">Talking App Kit</h6>
+          </div>
+          <div class="timeline-body">
+            <ul>
+              <li>Developed a toolkit for adding talking features to iOS apps</li>
+              <li>Created chaining-based features</li>
+            </ul>
+            <span class="badge badge-dark">Swift</span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="timeline-image">
+          <h4>Summer 2021</h4>
+        </div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4>Intern Software Engineer</h4>
+            <h6 class="text-muted">FarmAfield</h6>
+          </div>
+          <div class="timeline-body">
+            <ul>
+              <li>Maintained Django web-app for cattle investment company</li>
+              <li>Improved investment webpage and pdf to maximize clarity</li>
+            </ul>
+            <span class="badge badge-dark">Python</span>
+            <span class="badge badge-dark">Django</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Research Projects Section -->
+    <h2 class="section-title" id="research">Research Projects</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <img src="res/Hacman_rotate.gif" class="card-img-top mb-3" alt="HACMan-AFF Project">
+            <h5 class="card-title">HACMan-AFF (Spring 2025)</h5>
+            <h6 class="card-subtitle">ML for Robotics</h6>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <ul>
+                <li>Trained 3 non-prehensile manipulation skills</li>
+                <li>Evaluated object affordances using trained models</li>
+                <li>Worked off of existing point-cloud based actor-critic model</li>
+                <li>Wrote a <a href="res/hacman_aff.pdf" download>research paper</a> detailing results</li>
+              </ul>
+            </p>
+            <span class="badge badge-dark">Python</span>
+            <span class="badge badge-dark">PyTorch</span>
+            <span class="badge badge-dark">MuJoCo</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <img src="res/hri.gif" class="card-img-top mb-3" alt="AR-Controlled Robot Arm">
+            <h5 class="card-title">AR-Controlled Robot Arm (Fall 2024)</h5>
+            <h6 class="card-subtitle">HRI Class</h6>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <ul>
+                <li>Designed interfaces for pick-and-place and surface wiping</li>
+                <li>Performed a comparative user study to test effectiveness</li>
+                <li>Wrote a <a href="res/HRI_Paper.pdf" download>research paper</a> detailing results</li>
+              </ul>
+            </p>
+            <span class="badge badge-dark">C#</span>
+            <span class="badge badge-dark">Unity</span>
+            <span class="badge badge-dark">ROS 2</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <img src="res/dungeon_generator.png" class="card-img-top mb-3" alt="Motion Planning Game">
+            <h5 class="card-title">Motion Planning Game Algorithm (Fall 2024)</h5>
+            <h6 class="card-subtitle">Motion Planning Class</h6>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <ul>
+                <li>Procedural dungeon generation algorithm encouraging loops and branching paths</li>
+                <li>Used motion planning algorithms: RRT, EST, KPIECE</li>
+                <li>Wrote a <a href="res/Dungeon_Generation_Algorithm.pdf" download>research paper</a> detailing results</li>
+              </ul>
+            </p>
+            <span class="badge badge-dark">C#</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <img src="res/mobile_shield.gif" class="card-img-top mb-3" alt="Defensive Army Robot">
+            <h5 class="card-title">Defensive Army Robot (2021-2022)</h5>
+            <h6 class="card-subtitle">Senior Capstone</h6>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <ul>
+                <li>Prototyped mobile shield robot for the Army Research Office</li>
+                <li>Implemented perception and navigation algorithms</li>
+                <li>Modeled 8 mechanum-wheel drive train dynamics</li>
+                <li><a href="https://youtu.be/AUB1EyBzCTI?si=yr7TAtKIkiQkNyvv" target="_blank"><i class="fab fa-github"></i> Video</a></li>
+              </ul>
+            </p>
+            <span class="badge badge-dark">Python</span>
+            <span class="badge badge-dark">C++</span>
+            <span class="badge badge-dark">ROS 2</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <img src="res/chess_detection.gif" class="card-img-top mb-3" alt="Chess Detection">
+            <h5 class="card-title">Chess Detection Algorithm (Spring 2021)</h5>
+            <h6 class="card-subtitle">CV Class</h6>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <ul>
+                <li>Created an algorithm to track a live chess game</li>
+                <li>Algorithm based on color masking noise filtering</li>
+                <li><a href="https://github.com/JazKarit/ChessDetection">Github link</a></li>
+              </ul>
+            </p>
+            <span class="badge badge-dark">Python</span>
+            <span class="badge badge-dark">OpenCV</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Entrepreneurial Projects Section -->
+    <h2 class="section-title" id="projects">Entrepreneurial Ventures</h2>
     
-    </script>
-  </body>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <img src="res/mod64.gif" class="card-img-top mb-3" alt="MOD64 game">
+            <h5 class="card-title">MOD64 (2018 - Present)</h5>
+            <h6 class="card-subtitle">Modular Board Game System</h6>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <ul>
+                <li>Designed and prototyped a system that plays 50+ games</li>
+                <li>Created a <a href="https://jaskritssingh.wixsite.com/mod64">community forum</a> to facilitate the exchange of board game ideas</li>
+                <li>Made a <a href="https://jazkarit.github.io/MOD64-Diagram-Generator/#/">diagram generator</a> for easily depicting board game ideas</li>
+                <li>Competed in the 2020 CU New Venture Challenge</li>
+                <li>Created a <a href="https://youtu.be/8MAbtxj4EYM?si=2v5XP2P5TjYQFavc">video</a> to showcase MOD64</li>
+              </ul>
+            </p>
+            <span class="badge badge-dark">CAD</span>
+            <span class="badge badge-dark">Flutter</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <img src="res/daedulus_dungeon.gif" class="card-img-top mb-3" alt="MOD64 game">
+            <h5 class="card-title">Daedulus' Dungeon (2018 - Present)</h5>
+            <h6 class="card-subtitle">Games & Education Class</h6>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <ul>
+                <li>3D math dungeon to allow players to explore the world of math</li>
+                <li>Problems & hints are generated based on player progress</li>
+                <li>Game design based on educational theory</li>
+              </ul>
+            </p>
+            <span class="badge badge-dark">C#</span>
+            <span class="badge badge-dark">Unity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Volunteer Section -->
+    <h2 class="section-title" id="volunteer">Volunteer Experience</h2>
+
+    <!-- <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <img src="res/mod64.gif" class="card-img-top mb-3" alt="MOD64 game">
+            <h5 class="card-title">MOD64 (2018 - Present)</h5>
+            <h6 class="card-subtitle">Modular Board Game System</h6>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <ul>
+                <li>Designed and prototyped a system that plays 50+ games</li>
+                <li>Created a <a href="https://jaskritssingh.wixsite.com/mod64">community forum</a> to facilitate the exchange of board game ideas</li>
+                <li>Made a <a href="https://jazkarit.github.io/MOD64-Diagram-Generator/#/">diagram generator</a> for easily depicting board game ideas</li>
+                <li>Competed in the 2020 CU New Venture Challenge</li>
+                <li>Created a <a href="https://youtu.be/8MAbtxj4EYM?si=2v5XP2P5TjYQFavc">video</a> to showcase MOD64</li>
+              </ul>
+            </p>
+            <span class="badge badge-dark">CAD</span>
+            <span class="badge badge-dark">Flutter</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <img src="res/daedulus_dungeon.gif" class="card-img-top mb-3" alt="MOD64 game">
+            <h5 class="card-title">Daedulus' Dungeon (2018 - Present)</h5>
+            <h6 class="card-subtitle">Games & Education Class</h6>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <ul>
+                <li>3D math dungeon to allow players to explore the world of math</li>
+                <li>Problems & hints are generated based on player progress</li>
+                <li>Game design based on educational theory</li>
+              </ul>
+            </p>
+            <span class="badge badge-dark">C#</span>
+            <span class="badge badge-dark">Unity</span>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <img src="res/xteam.jpg" class="card-img-top mb-3" alt="FIRST Robotics Coach">
+            <h5 class="card-title">FIRST Robotics Coach (2015-2023)</h5>
+            <h6 class="card-subtitle">X-Team Robotics</h6>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <ul>
+                <li>Introduced students ages 8-18 to robotics fundamentals</li>
+                <li>Coached 1 FTC, 3 FLL, and 5 Jr. FLL Teams</li>
+              </ul>
+            </p>
+            <span class="badge badge-dark">Python</span>
+            <span class="badge badge-dark">Java</span>
+            <span class="badge badge-dark">CAD</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <img src="res/thinking_huts.gif" class="card-img-top mb-3" alt="FIRST Robotics Coach">
+            <h5 class="card-title">Team Lead (Spring 2021)</h5>
+            <h6 class="card-subtitle">Blueprint Boulder, Thinking Huts</h6>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <ul>
+                <li>Supported mission to 3D print schools in Madagascar</li>
+                <li>Scraped data from 6 sites to gather sourcing information</li>
+                <li>Created tool to search by location, service and favorites</li>
+              </ul>
+            </p>
+            <span class="badge badge-dark">Python</span>
+            <span class="badge badge-dark">Javascript</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Awards Section -->
+  <h2 class="section-title" id="awards">Awards & Achievements</h2>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <img height=30 src="res/wpi_logo.gif" alt="WPI Logo" class="award-logo">
+              WPI Gateway Merit Scholarship (Sole recipient in RBE department)
+              <span class="badge badge-pill award-badge">2024</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <img height=30 src="res/hackcu.png" alt="WPI Logo" class="award-logo">
+              2nd place prize at HackCU 5
+              <span class="badge badge-pill award-badge">2019</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <img height=30 src="res/math-modeling.jpeg" alt="WPI Logo" class="award-logo">
+              1st place National Math Modeling Competition
+              <span class="badge badge-pill award-badge">2018</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <img height=30 src="res/im2c-logo.png" alt="WPI Logo" class="award-logo">
+              2nd place International Math Modeling Competition
+              <span class="badge badge-pill award-badge">2017</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <img height=30 src="res/first.jpg" alt="WPI Logo" class="award-logo">
+              FTC Robotics MT State Champion
+              <span class="badge badge-pill award-badge">2017</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+
+  
+
+  
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Contact Information</h4>
+          <p><i class="fas fa-envelope contact-icon"></i> jsingh3@wpi.edu</p>
+          <p><i class="fas fa-phone contact-icon"></i> 406-603-0536</p>
+        </div>
+        <!-- <div class="col-md-6">
+          <h4>Connect</h4>
+          <a href="https://github.com/JazKarit" target="_blank" class="text-white mr-3"><i class="fab fa-github contact-icon"></i></a>
+          <a href="https://youtube.com/@coding_with_jaz" target="_blank" class="text-white"><i class="fab fa-youtube contact-icon"></i></a>
+        </div> -->
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
 </html>
