@@ -1,1 +1,37 @@
-Personal Website
+# Jaskrit Singh
+
+Personal academic website using the al-folio v1 starter and its versioned `al_folio_core` runtime. The custom domain is `jaskrit.com`.
+
+## Editing
+
+- `index.html`: biography and homepage settings.
+- `_bibliography/papers.bib`: publications, links, and summaries; `selected = {true}` displays a paper on the homepage.
+- `_projects/`: research, entrepreneurship, and service projects.
+- `_pages/cv.md`: education, experience, skills, and awards.
+- `_data/socials.yml`: contact links.
+- `_config.yml`: site and theme settings.
+- `res/`: existing images, animations, and project PDFs.
+
+The three 2026 papers are listed as arXiv preprints. The text in each abstract field is a short summary, rather than the paper's full abstract.
+
+## Publishing
+
+In this repository's **Settings → Pages → Build and deployment**, choose **GitHub Actions** as the source. The workflow in `.github/workflows/deploy.yml` builds on Ubuntu and deploys pushes to `master` or `main`. Pull requests build without publishing. Keep the existing custom domain set to `jaskrit.com`.
+
+GitHub Pages' built-in Jekyll builder cannot load al-folio's custom gems; use the included workflow.
+
+## Local preview
+
+Use Ruby 3.3+, Bundler 4.0.6, and Node.js 22. Linux or WSL2 is convenient; Windows editing works with Linux builds in GitHub Actions.
+
+```sh
+gem install bundler -v 4.0.6
+bundle install
+bundle exec jekyll serve
+```
+
+Open `http://localhost:4000/`. The domain is served at the root, so `baseurl` stays empty.
+
+The imported template folder and `.local-tools/` are ignored by Git and excluded from the generated site. A backup of the pre-migration working copy is kept locally at `.local-tools/original-index.html`.
+
+See `LICENSE-al-folio` for the starter's MIT license.
