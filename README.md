@@ -12,13 +12,6 @@ Personal academic website using the al-folio v1 starter and its versioned `al_fo
 - `_config.yml`: site and theme settings.
 - `res/`: existing images, animations, and project PDFs.
 
-The three 2026 papers are listed as arXiv preprints. The text in each abstract field is a short summary, rather than the paper's full abstract.
-
-## Publishing
-
-In this repository's **Settings → Pages → Build and deployment**, choose **GitHub Actions** as the source. The workflow in `.github/workflows/deploy.yml` builds on Ubuntu and deploys pushes to `master` or `main`. Pull requests build without publishing. Keep the existing custom domain set to `jaskrit.com`.
-
-GitHub Pages' built-in Jekyll builder cannot load al-folio's custom gems; use the included workflow.
 
 ## Local preview
 
